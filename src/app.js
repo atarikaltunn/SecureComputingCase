@@ -1,25 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-//configurations
-require('dotenv').config()
-const database = require('./config/database');
-
-// const userRoute = require('./routes/userRoute');
-
+const todoRoute = require('./routes/todoRouter')
 const app = express();
 
+//configurations
+require('dotenv').config()
 //DB Connection
-
+const database = require('./config/database');
 
 //Middleware
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 //Routes
-// app.use('/', pageRoute);
+app.use('/', todoRoute);
 
-const port = 3000;
+const port = process.env.PORT;
 app.listen(port, () => {
-    console.log(`App started on port ${port} at: `, new Date().toLocaleString());
+    console.log(`App started on port ${port} at:`, new Date().toLocaleString());
 });
