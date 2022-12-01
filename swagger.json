@@ -1,0 +1,135 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "SecureComputing Case CRUD Swagger",
+        "description": "Swagger Documentation of Secure Computing's Case API",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:8000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Todos",
+            "description": "API for todos in the system"
+        }
+    ],
+    "paths": {
+        "/todo-list": {
+            "get": {
+                "tags": [
+                    "Todos"
+                ],
+                "summary": "Get all todos in system",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Todos"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Todos"
+                ],
+                "summary": "Creates a new todo in system",
+                "parameters": [
+                    {
+                        "name": "todo",
+                        "in": "body",
+                        "description": "Todo that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Todos"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "New todo is created",
+                        "schema": {
+                            "$ref": "#/definitions/Todos"
+                        }
+                    }
+                }
+            }
+        },
+        "/todo-list/{id}": {
+            "parameters": [
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "description": "ID of todo that we want to update/delete",
+                "type": "string"
+              }
+            ],
+            "put": {
+              "summary": "Update todo with given ID",
+              "tags": ["Todos"],
+              "parameters": [
+                {
+                  "name": "Todo",
+                  "in": "body",
+                  "description": "Todo with new values of properties",
+                  "schema": {
+                    "$ref": "#/definitions/Todos"
+                  }
+                }
+              ],
+              "responses": {
+                "201": {
+                  "description": "Todo is updated",
+                  "schema": {
+                    "$ref": "#/definitions/Todos"
+                  }
+                }
+              }
+            },
+            "delete": {
+                "summary": "Delete todo with given ID",
+                "tags": ["Todos"],
+                "responses": {
+                  "200": {
+                    "description": "Todo is deleted",
+                    "schema": {
+                      "$ref": "#/definitions/Todos"
+                    }
+                  }
+                }
+              }
+          } 
+    },
+    "definitions": {
+        "Todos": {
+            "required": [
+                "name",
+                "status"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ]
+}

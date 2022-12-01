@@ -1,20 +1,20 @@
 const Todo = require('../models/Todo');
 
 exports.getTodoList = async (req, res) => {
-    await onGetTodoList(res);
+    onGetTodoList(res);
 };
 exports.createTodo = async (req, res) => {
     const { name, status } = req.body;
-    await onCreateTodo(name, status, req, res);
+    onCreateTodo(name, status, req, res);
 };
 exports.updateTodo = async (req, res) => {
     const { id } = req.params;
     const { name, status } = req.body;
-    await onUpdateTodo(id, name, status, req, res);
+    onUpdateTodo(id, name, status, req, res);
 };
 exports.deleteTodo = async (req, res) => {
     const { id } = req.params;
-    await onDeleteTodo(id, res);
+    onDeleteTodo(id, res);
 };
 
 async function onGetTodoList(res) {
