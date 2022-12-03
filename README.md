@@ -47,8 +47,9 @@ Now, you can reach to /api-docs to find out what can you do with this API.
 ```
 npm run docs
 ```
+After using this command, you will be able to reach document on /docs/index.html
 
-- Runs the Jest tests
+- Runs the tests
 ```
 npm run test
 ```
